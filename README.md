@@ -8,6 +8,7 @@ I have been interested in how alignment tools deal with reads that map to many p
 * [Mapping repeats](https://davetang.org/muse/2013/05/25/mapping-repeats/)
 * [Mapping repeats 2](https://davetang.org/muse/2013/08/27/mapping-repeats-2/)
 * [Genome mappability](https://davetang.org/muse/2012/09/14/genome-mapability/)
+* [Mapping qualities](https://davetang.org/muse/2011/09/14/mapping-qualities/)
 * [Using BLAT to map short RNAs](https://davetang.org/muse/2010/11/16/can-we-use-blat-to-map-mirnas/)
 * [Mapping random sized reads to the genome](https://davetang.org/muse/2011/10/29/mapping-random-sized-reads-to-the-genome/)
 
