@@ -60,7 +60,7 @@ foreach my $read (keys %reads){
    ++$i;
 }
 
-print $ref_fh "$ref\n";
+print $ref_fh ">ref\n$ref\n";
 
 close($read_fh);
 close($ref_fh);
