@@ -2,6 +2,7 @@
 
 I have been interested in how alignment tools deal with reads that map to many places in a reference genome, i.e. multimapping reads, for a long time. For example, take a look at all these old blog posts I have written:
 
+* [BWA and multi-mapping reads](https://davetang.org/muse/2011/10/11/bwa-and-multi-mapping-reads/)
 * [Bowtie and multimapping reads](https://davetang.org/muse/2011/11/26/bowtie-and-multimapping-reads/)
 * [How mappable is a specific repeat](https://davetang.org/muse/2014/03/29/mappable-specific-repeat/)
 * [Mapping repeats](https://davetang.org/muse/2013/05/25/mapping-repeats/)
