@@ -1,0 +1,32 @@
+---
+title: "BWA"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+Sys.setenv(PATH=paste0(Sys.getenv("PATH"), ":", getwd()))
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Prepare reference and map.
+
+```{bash engine.opts='-l'}
+l=100
+r=100
+../script/create_ref_se.pl -l ${l} -r ${r}
+bwa index l${l}_r${r}_ref.fa
+bwa mem l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null > default.sam
+```
+
+Examine results.
+
+```{bash engine.opts='-l'}
+head default.sam
+```
+
+Clean up.
+
+```{bash engine.opts='-l'}
+rm *.sam *.fa *.fa.amb *.fa.ann *.fa.bwt *.fa.pac *.fa.sa
+```
+
