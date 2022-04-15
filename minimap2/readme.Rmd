@@ -1,0 +1,134 @@
+---
+title: "Minimap2"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+Sys.setenv(PATH=paste0(Sys.getenv("PATH"), ":", getwd()))
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Minimap2 usage.
+
+```{bash engine.opts='-l'}
+minimap2 || true
+```
+
+Generate 100 unique reads with read lengths of 100 bp and repeat each unique read incrementally, i.e. first read is unique, second read is repeated twice, third read is repeated thrice, and so on. Next use these reads to generate a reference sequence where each read is separated by a spacer sequence that is two times the length of a read, which is 200 bp in this case.
+
+>Without any options, minimap2 takes a reference database and a query sequence file as input and produce approximate mapping, without base-level alignment (i.e. coordinates are only approximate and no CIGAR in output).
+
+```{bash engine.opts='-l'}
+l=100
+r=100
+../script/create_ref_se.pl -l ${l} -r ${r}
+minimap2 -a l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null > default.sam
+```
+
+Multimapping reads are reported with one read set as the primary alignment and the others set as secondary alignment/s.
+
+```{bash engine.opts='-l'}
+head default.sam
+```
+
+The default setting is to keep only 5 secondary alignments.
+
+>-N INT       retain at most INT secondary alignments [5]
+
+```{bash engine.opts='-l'}
+cat default.sam | grep -v "^@" | cut -f1 | sort | uniq -c | sort -k2n | head
+```
+
+Report up to 100 secondary alignments.
+
+```{bash engine.opts='-l'}
+l=100
+r=100
+../script/create_ref_se.pl -l ${l} -r ${r}
+minimap2 -N ${r} -a l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null \
+   | grep -v "^@" \
+   | cut -f1 \
+   | sort \
+   | uniq -c \
+   | sort -k2rn \
+   | head
+```
+
+Report up to 1,000 secondary alignments.
+
+```{bash engine.opts='-l'}
+l=100
+r=1000
+../script/create_ref_se.pl -l ${l} -r ${r}
+minimap2 -N ${r} -a l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null \
+   | grep -v "^@" \
+   | cut -f1 \
+   | sort \
+   | uniq -c \
+   | sort -k2rn \
+   | head
+```
+
+Report up to 10,000 secondary alignments fails (and returns with an error but `rmarkdown::render` continues).
+
+```{bash engine.opts='-l'}
+l=100
+r=10000
+../script/create_ref_se.pl -l ${l} -r ${r}
+minimap2 -t 8 -N ${r} -a l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa
+
+echo $?
+```
+
+Report up to 5,000 secondary alignments also fails (but with with a return code of 0) and all reads are unmapped.
+
+```{bash engine.opts='-l'}
+l=100
+r=5000
+../script/create_ref_se.pl -l ${l} -r ${r}
+minimap2 -t 8 -N ${r} -a l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa > r${r}.sam
+
+echo $?
+
+head r${r}.sam
+```
+
+Report up to 2,000 secondary alignments works!
+
+```{bash engine.opts='-l'}
+l=100
+r=2000
+../script/create_ref_se.pl -l ${l} -r ${r}
+minimap2 -N ${r} -a l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null \
+   | grep -v "^@" \
+   | cut -f1 \
+   | sort \
+   | uniq -c \
+   | sort -k2rn \
+   | head
+```
+
+We will repeat the mapping step 100 times to test whether reported loci are randomly selected. We have also set `-N` to 100 to report up to 100 additional loci, to provide more loci to (potentially) randomly select from.
+
+However, the reported mapping of read `20` is always the same, so even though the reported loci seems to be randomly selected, the same loci is chosen.
+
+```{bash engine.opts='-l'}
+l=100
+r=100
+for i in {1..100}; do
+   minimap2 -N ${r} -a l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null
+done | grep $'^20\t0' | sort | uniq -c
+```
+
+Clean up.
+
+```{bash engine.opts='-l'}
+rm *.sam *.fa
+```
+
+Minimap2 version used for this README.
+
+```{bash engine.opts='-l'}
+minimap2 --version
+```
+
