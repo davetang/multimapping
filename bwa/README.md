@@ -83,7 +83,8 @@ using the default BWA settings.
 
 The default for reporting for multimappers
 
-    -h INT[,INT]  if there are <INT hits with score >80% of the max score, output all in XA [5,200]
+> -h INT\[,INT\] if there are <INT hits with score >80% of the max
+> score, output all in XA \[5,200\]
 
 Read `6`, which occurs six times in the reference has all five
 additional mapping loci reported in the XA tag and reads mapping seven
@@ -98,14 +99,14 @@ coordinates smaller than the reported location.
 
     ## @SQ  SN:ref  LN:1515200
     ## @PG  ID:bwa  PN:bwa  VN:0.7.17-r1188 CL:bwa mem l100_r100_ref.fa l100_r100_reads.fa
-    ## 1    0   ref 201 60  100M    *   0   0   GGGGCGCCGCGATCTTCCGACGCAGGGTTTTATTACTCGGGCTATATAGGTTAGCGACGATGTGTAATTACTAGATTACGACATATATAAGACCAGGCCG    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:0
-    ## 2    0   ref 501 0   100M    *   0   0   TGCGGTAGTCTGCCCGGGTGCATGGGGTTCCCAGTAGTACGGTGAGGGAACCCGCATCCGATTTCGATGACCTGGAACGTTATCCGAAGATACCATAAAT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+801,100M,0;
+    ## 1    0   ref 201 60  100M    *   0   0   ATATGTCCGAGGAATGCTACGCGTTGTTTACCAGCTAATCCCGATGCCAAGGGAAACCCGAAGTTAGGGCAGAGGCAACAAACGACACTAGCTTGACATG    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:0
+    ## 2    0   ref 501 0   100M    *   0   0   TAAGATGGTCTAGTGCTTCTCGGCCATTAGTCTGGGCCTTCACGCGTTACTGAAGGATCCTTCAAACTATTTTATCTTTCAACGCAGGTGGAGCCCGATT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+801,100M,0;
     ## 3    0   ref 1701    0   100M    *   0   0   TGCGGGTCTTCTAGGAGATGGTGCAACACATCATCCCTAATCTTAATTGCCGCCAAACATTACTAGAGAATCCCCCTTCGAACATTTCAGGCATTGTAAA    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+1101,100M,0;ref,+1401,100M,0;
-    ## 4    0   ref 2901    0   100M    *   0   0   CGCTCAAGTTCGTGGCAGAATATGCTCCAGTAATATAGGTGGGCCGCACTTCCCGGCCACTACAGGTATCACACGACGACGACGGCCCTATGAAAACGTT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+2301,100M,0;ref,+2601,100M,0;ref,+2001,100M,0;
-    ## 5    0   ref 3801    0   100M    *   0   0   AGTTGGACGAGAGATATGGACCCTACTAAACGGTCGGCTGTTGGGAAATGGGGACCGTGCTTCTTAGGGGTTTGCAGGAAAGCTCTCGCTATTATCCGAT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+3201,100M,0;ref,+4401,100M,0;ref,+3501,100M,0;ref,+4101,100M,0;
-    ## 6    0   ref 5901    0   100M    *   0   0   TACTGCCACAGCGCCAGTATGTCTGTTTCGTGAGAAAGTACTTTTTGCTTCCCTAAGACGTTGAAGCAGGCAGGTGAGTTGTAGCCACAGTCCATATGCT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+5001,100M,0;ref,+5601,100M,0;ref,+4701,100M,0;ref,+6201,100M,0;ref,+5301,100M,0;
-    ## 7    0   ref 7401    0   100M    *   0   0   GTAATCCTGTCGTGAAATACGCTTGCATACAGACGCGAATAGGCTACGCCTGGACCACTTGTCCCTGCCATTCTCTATTGGATATGCCCACCGGAACTGG    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100
-    ## 8    0   ref 9201    0   100M    *   0   0   AGATACACTCCGTATTTTCTCTTCTGCTAAAGTATAACACTTGTTACGTCACGCTCCCCACTAGATTAATAACCCCCGGGAACCTGTTGGAGATCTTCTG    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100
+    ## 4    0   ref 2901    0   100M    *   0   0   AACCAGGAACTTTCGGAAGCTCTTAGACGCAGCGCTTGTGCTCCCGCATCGGGGCAGTATTCGATACATCGTTAAACAAGGATTGACATATTTGGCTCTG    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+2301,100M,0;ref,+2601,100M,0;ref,+2001,100M,0;
+    ## 5    0   ref 3801    0   100M    *   0   0   CGCTCAAGTTCGTGGCAGAATATGCTCCAGTAATATAGGTGGGCCGCACTTCCCGGCCACTACAGGTATCACACGACGACGACGGCCCTATGAAAACGTT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+3201,100M,0;ref,+4401,100M,0;ref,+3501,100M,0;ref,+4101,100M,0;
+    ## 6    0   ref 5901    0   100M    *   0   0   GATTGTAGTACACGAAGATTAACGGTTGCCTCGTTTGTTAATATTGTGTATCCTGTCTAGTATACACGTGCAAACGGGTGTGGCGCAGCACACATATCTG    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+5001,100M,0;ref,+5601,100M,0;ref,+4701,100M,0;ref,+6201,100M,0;ref,+5301,100M,0;
+    ## 7    0   ref 7401    0   100M    *   0   0   ACGAGTGAGCCAGCACTCTAAGTGCCCTGTGTACCTGTGCTTCCAAGAGCGGCCCTAAGGGGCCATTGTGAGATGAGACCCACTCACTGCCCGGTACCAC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100
+    ## 8    0   ref 9201    0   100M    *   0   0   GCCTGGCTATACCTTAGAGCTCCGGAGAACGCTGCCGAATGTCCGCATAAACACCGAAGTGAGGTGAGGGGAAAAGGCGTGACTTGTCTCGGACCATGAC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100
 
 We will repeat the mapping step 100 times to test whether reported loci
 are randomly selected. We have also set `-h` to 20 to report up to 20
@@ -122,14 +123,14 @@ chosen.
        bwa mem -h 20 l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null
     done | grep ^20 | sort | uniq -c
 
-    ##     100 20   0   ref 62301   0   100M    *   0   0   GCCTGGCTATACCTTAGAGCTCCGGAGAACGCTGCCGAATGTCCGCATAAACACCGAAGTGAGGTGAGGGGAAAAGGCGTGACTTGTCTCGGACCATGAC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+57801,100M,0;ref,+57201,100M,0;ref,+61701,100M,0;ref,+59901,100M,0;ref,+59601,100M,0;ref,+61401,100M,0;ref,+58101,100M,0;ref,+58401,100M,0;ref,+60201,100M,0;ref,+59301,100M,0;ref,+61101,100M,0;ref,+62001,100M,0;ref,+59001,100M,0;ref,+60501,100M,0;ref,+62601,100M,0;ref,+58701,100M,0;ref,+60801,100M,0;ref,+57501,100M,0;ref,+62901,100M,0;
+    ##     100 20   0   ref 62301   0   100M    *   0   0   GGTGTCAGACGCTCCTTCACCCTTCGTCACCAGGGGCATTGCTAAGAAAAAGGATATTAACTCTAAATATGGCCCATCCCGGGGGTCGCGGCTGGGCCCG    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+57801,100M,0;ref,+57201,100M,0;ref,+61701,100M,0;ref,+59901,100M,0;ref,+59601,100M,0;ref,+61401,100M,0;ref,+58101,100M,0;ref,+58401,100M,0;ref,+60201,100M,0;ref,+59301,100M,0;ref,+61101,100M,0;ref,+62001,100M,0;ref,+59001,100M,0;ref,+60501,100M,0;ref,+62601,100M,0;ref,+58701,100M,0;ref,+60801,100M,0;ref,+57501,100M,0;ref,+62901,100M,0;
 
 We will generate a read that repeats up to 505 times. The `-c` parameter
 will skip regions that occur 500 times by default and thus a read will
 have up to 500 additional loci reported, which is what the Perl
 one-liner is showing.
 
-    -c INT        skip seeds with more than INT occurrences [500]
+> -c INT skip seeds with more than INT occurrences \[500\]
 
     l=100
     r=505
@@ -182,3 +183,35 @@ additional loci.
 Clean up.
 
     rm *.sam *.fa *.fa.amb *.fa.ann *.fa.bwt *.fa.pac *.fa.sa
+
+BWA version used for this README.
+
+    bwa || true
+
+    ## 
+    ## Program: bwa (alignment via Burrows-Wheeler transformation)
+    ## Version: 0.7.17-r1188
+    ## Contact: Heng Li <lh3@sanger.ac.uk>
+    ## 
+    ## Usage:   bwa <command> [options]
+    ## 
+    ## Command: index         index sequences in the FASTA format
+    ##          mem           BWA-MEM algorithm
+    ##          fastmap       identify super-maximal exact matches
+    ##          pemerge       merge overlapping paired ends (EXPERIMENTAL)
+    ##          aln           gapped/ungapped alignment
+    ##          samse         generate alignment (single ended)
+    ##          sampe         generate alignment (paired ended)
+    ##          bwasw         BWA-SW for long queries
+    ## 
+    ##          shm           manage indices in shared memory
+    ##          fa2pac        convert FASTA to PAC format
+    ##          pac2bwt       generate BWT from PAC
+    ##          pac2bwtgen    alternative algorithm for generating BWT
+    ##          bwtupdate     update .bwt to the new format
+    ##          bwt2sa        generate SA from BWT and Occ
+    ## 
+    ## Note: To use BWA, you need to first index the genome with `bwa index'.
+    ##       There are three alignment algorithms in BWA: `mem', `bwasw', and
+    ##       `aln/samse/sampe'. If you are not sure which to use, try `bwa mem'
+    ##       first. Please `man ./bwa.1' for the manual.

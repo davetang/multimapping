@@ -82,3 +82,9 @@ Clean up.
 rm *.sam *.fa *.fa.amb *.fa.ann *.fa.bwt *.fa.pac *.fa.sa
 ```
 
+BWA version used for this README.
+
+```{bash engine.opts='-l'}
+bwa || true
+```
+
