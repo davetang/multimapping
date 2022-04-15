@@ -123,7 +123,7 @@ done | grep $'^20\t0' | sort | uniq -c
 Clean up.
 
 ```{bash engine.opts='-l'}
-rm *.sam *.fa
+rm *.sam *.fa core*
 ```
 
 Minimap2 version used for this README.
