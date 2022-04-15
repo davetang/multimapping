@@ -43,7 +43,7 @@ while(scalar keys %reads < $repeat){
    }
 }
 
-my $spacer = 'A' x int($rl * 5);
+my $spacer = 'A' x int($rl * 2);
 my $ref = $spacer;
 my $i = 1;
 
