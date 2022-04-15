@@ -8,20 +8,72 @@ Sys.setenv(PATH=paste0(Sys.getenv("PATH"), ":", getwd()))
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Prepare reference and map.
+BWA MEM usage.
+
+```{bash engine.opts='-l'}
+bwa mem || true
+```
+
+Generate 100 unique reads with read lengths of 100 bp and repeat each unique read incrementally, i.e. first read is unique, second read is repeated twice, third read is repeated thrice, and so on. Next use these reads to generate a reference sequence where each read is separated by a spacer sequence that is five times the length of a read, which is 500 bp in this case.
+
+The reference sequence is indexed and the reads mapped to this reference using the default BWA settings.
 
 ```{bash engine.opts='-l'}
 l=100
 r=100
 ../script/create_ref_se.pl -l ${l} -r ${r}
-bwa index l${l}_r${r}_ref.fa
+bwa index l${l}_r${r}_ref.fa 2> /dev/null
 bwa mem l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null > default.sam
 ```
 
-Examine results.
+The default for reporting for multimappers
+
+>-h INT[,INT]  if there are <INT hits with score >80% of the max score, output all in XA [5,200]
+
+Read `6`, which occurs six times in the reference has all five additional mapping loci reported in the XA tag and reads mapping seven times or more do not have additional loci reported.
+
+In addition, note that the reported location, i.e. columns three and four of the SAM file, is not the first occurrence of the sequence. You can confirm this by looking at the XA tag and seeing that there are coordinates smaller than the reported location.
 
 ```{bash engine.opts='-l'}
 head default.sam
+```
+
+We will repeat the mapping step 100 times to test whether reported loci are randomly selected. We have also set `-h` to 20 to report up to 20 additional loci, to provide more loci to (potentially) randomly select from.
+
+However, the reported mapping of read `20` is always the same, so even though the reported loci seems to be randomly selected, the same loci is chosen.
+
+```{bash engine.opts='-l'}
+l=100
+r=100
+for i in {1..100}; do
+   bwa mem -h 20 l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null
+done | grep ^20 | sort | uniq -c
+```
+
+We will generate a read that repeats up to 505 times. The `-c` parameter will skip regions that occur 500 times by default and thus a read will have up to 500 additional loci reported, which is what the Perl one-liner is showing.
+
+>-c INT        skip seeds with more than INT occurrences [500]
+
+```{bash engine.opts='-l'}
+l=100
+r=505
+../script/create_ref_se.pl -l ${l} -r ${r}
+bwa index l${l}_r${r}_ref.fa 2> /dev/null
+bwa mem -h ${r} l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null > r${r}.sam
+
+cat r${r}.sam | cut -f1,16 | perl -lane '@c = $_ =~ /ref/g; print $F[0], "\t", scalar @c + 1' | tail
+```
+
+We will generate a read that repeats up to 600 times and set `-c` and `-h` to 600. The results show that reads now show more than 500 additional loci.
+
+```{bash engine.opts='-l'}
+l=100
+r=600
+../script/create_ref_se.pl -l ${l} -r ${r}
+bwa index l${l}_r${r}_ref.fa 2> /dev/null
+bwa mem -h ${r} -c ${r} l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null > r${r}.sam
+
+cat r${r}.sam | cut -f1,16 | perl -lane '@c = $_ =~ /ref/g; print $F[0], "\t", scalar @c + 1' | tail
 ```
 
 Clean up.
