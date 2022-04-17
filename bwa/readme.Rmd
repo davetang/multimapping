@@ -76,6 +76,18 @@ bwa mem -h ${r} -c ${r} l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null > r
 cat r${r}.sam | cut -f1,16 | perl -lane '@c = $_ =~ /ref/g; print $F[0], "\t", scalar @c + 1' | tail
 ```
 
+BWA MEM works for 3,500 additional loci but fails for 4,000.
+
+```{bash engine.opts='-l'}
+l=100
+r=3500
+../script/create_ref_se.pl -l ${l} -r ${r}
+bwa index l${l}_r${r}_ref.fa 2> /dev/null
+bwa mem -h ${r} -c ${r} l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null > r${r}.sam
+
+cat r${r}.sam | cut -f1,16 | perl -lane '@c = $_ =~ /ref/g; print $F[0], "\t", scalar @c + 1' | tail
+```
+
 Clean up.
 
 ```{bash engine.opts='-l'}
