@@ -93,11 +93,11 @@ echo $?
 head r${r}.sam
 ```
 
-Report up to 2,000 secondary alignments works!
+Report up to 3,500 secondary alignments works!
 
 ```{bash engine.opts='-l'}
 l=100
-r=2000
+r=3500
 ../script/create_ref_se.pl -l ${l} -r ${r}
 minimap2 -N ${r} -a l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null \
    | grep -v "^@" \

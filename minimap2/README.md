@@ -81,14 +81,14 @@ alignment and the others set as secondary alignment/s.
 
     ## @SQ  SN:ref  LN:1515200
     ## @PG  ID:minimap2 PN:minimap2 VN:2.24-r1122   CL:minimap2 -a l100_r100_ref.fa l100_r100_reads.fa
-    ## 1    0   ref 201 60  100M    *   0   0   GTTTGTTCCCGGTGCAGAAAGGTCTCCATCTCGTGTGAGTGGCCTAGCTAATCTGTGGATTATGAGTTCTGATCGAAAAGAAATTCGTTCAAGATGACCT    *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:P  cm:i:13 s1:i:88 s2:i:0  de:f:0  rl:i:0
-    ## 2    0   ref 501 0   100M    *   0   0   ACACGCCCCTCAACGATTCAGGCTACTTTAACACTCCGCGGTGGGATCAGAGTTTAAACCTGTCAGCTCTTACAACGGTATGACGCGAAGTGGTAGCCTC    *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:P  cm:i:13 s1:i:91 s2:i:91 de:f:0  rl:i:0
-    ## 2    256 ref 801 0   100M    *   0   0   *   *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:S  cm:i:13 s1:i:91 de:f:0  rl:i:0
-    ## 3    0   ref 1101    0   100M    *   0   0   CACACAGTGAGACCAGAGCATGATCACGTCATGCCTAGTACCCGGGTATACGGCGCTTGACAGCCCTAGGTATCTGCAAAACCGAGTGGACGGGCTGCGC    *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:P  cm:i:13 s1:i:95 s2:i:95 de:f:0  rl:i:0
-    ## 3    256 ref 1401    0   100M    *   0   0   *   *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:S  cm:i:13 s1:i:95 de:f:0  rl:i:0
-    ## 3    256 ref 1701    0   100M    *   0   0   *   *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:S  cm:i:13 s1:i:95 de:f:0  rl:i:0
-    ## 4    0   ref 2601    0   100M    *   0   0   GCGTCTACAATGCTTAGGCGACCTAAGAGGACAGCTGCATGCCGGCTTACTTAATGCCCCTAGACGAGTTGGAGTCCTTCGGCCAGAGTTGAAGTCTTCT    *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:P  cm:i:16 s1:i:92 s2:i:92 de:f:0  rl:i:0
-    ## 4    256 ref 2301    0   100M    *   0   0   *   *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:S  cm:i:16 s1:i:92 de:f:0  rl:i:0
+    ## 1    0   ref 201 60  100M    *   0   0   CTAGCGACAATTGTGGGATGGCCCCTGGGGATCACTGGAGACGAAAAGATGCTATGATGCACCAGTGCGTGCTTGACACTAGTGTATATAAAACTGTACA    *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:P  cm:i:16 s1:i:87 s2:i:0  de:f:0  rl:i:0
+    ## 2    0   ref 801 0   100M    *   0   0   CTCCTTGCAGCAGCACGCGGTGCCATACTGCATCCCTAGAAGGCAGGGGCTTAACTGGAAGCAGAAAGAGGAGCCCAGTTCCGGCGTTCTTGGGCTAAAA    *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:P  cm:i:14 s1:i:86 s2:i:86 de:f:0  rl:i:0
+    ## 2    256 ref 501 0   100M    *   0   0   *   *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:S  cm:i:14 s1:i:86 de:f:0  rl:i:0
+    ## 3    0   ref 1101    0   100M    *   0   0   AGATACACTCCGTATTTTCTCTTCTGCTAAAGTATAACACTTGTTACGTCACGCTCCCCACTAGATTAATAACCCCCGGGAACCTGTTGGAGATCTTCTG    *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:P  cm:i:14 s1:i:86 s2:i:86 de:f:0  rl:i:0
+    ## 3    256 ref 1701    0   100M    *   0   0   *   *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:S  cm:i:14 s1:i:86 de:f:0  rl:i:0
+    ## 3    256 ref 1401    0   100M    *   0   0   *   *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:S  cm:i:14 s1:i:86 de:f:0  rl:i:0
+    ## 4    0   ref 2301    0   100M    *   0   0   TCCAACTAAATTCTGGAGCAGTTCGCAAATGGTTCTGTGCGCACATACATGATATTCCCCTACAACCTGACTGTTGGGACGAAAAACGGGCGGTCTGCGC    *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:P  cm:i:17 s1:i:86 s2:i:86 de:f:0  rl:i:0
+    ## 4    256 ref 2001    0   100M    *   0   0   *   *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:S  cm:i:17 s1:i:86 de:f:0  rl:i:0
 
 The default setting is to keep only 5 secondary alignments.
 
@@ -194,32 +194,32 @@ return code of 0) and all reads are unmapped.
     ## FASTA reference written to l100_r5000_ref.fa
     ## Done
     ## [WARNING][1;31m failed to parse the first FASTA/FASTQ record. Continue anyway.[0m
-    ## [M::mm_idx_gen::4.944*1.00] collected minimizers
-    ## [M::mm_idx_gen::4.947*1.00] sorted minimizers
-    ## [M::main::4.947*1.00] loaded/built the index for 0 target sequence(s)
-    ## [M::mm_mapopt_update::4.947*1.00] mid_occ = 10
+    ## [M::mm_idx_gen::4.954*1.00] collected minimizers
+    ## [M::mm_idx_gen::4.957*1.00] sorted minimizers
+    ## [M::main::4.958*1.00] loaded/built the index for 0 target sequence(s)
+    ## [M::mm_mapopt_update::4.958*1.00] mid_occ = 10
     ## [M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 0
-    ## [M::mm_idx_stat::4.947*1.00] distinct minimizers: 0 (-nan% are singletons); average occurrences: -nan; average spacing: -nan; total length: 0
-    ## [M::worker_pipeline::4.966*1.01] mapped 5000 sequences
+    ## [M::mm_idx_stat::4.958*1.00] distinct minimizers: 0 (-nan% are singletons); average occurrences: -nan; average spacing: -nan; total length: 0
+    ## [M::worker_pipeline::4.969*1.01] mapped 5000 sequences
     ## [M::main] Version: 2.24-r1122
     ## [M::main] CMD: minimap2 -t 8 -N 5000 -a l100_r5000_ref.fa l100_r5000_reads.fa
-    ## [M::main] Real time: 5.330 sec; CPU: 5.386 sec; Peak RSS: 3.498 GB
+    ## [M::main] Real time: 5.340 sec; CPU: 5.394 sec; Peak RSS: 3.498 GB
     ## 0
     ## @PG  ID:minimap2 PN:minimap2 VN:2.24-r1122   CL:minimap2 -t 8 -N 5000 -a l100_r5000_ref.fa l100_r5000_reads.fa
-    ## 1    4   *   0   0   *   *   0   0   TAGGTGATGTTCGCCGCAAAGGACAGGCTCGCCATGGATAGAAGTAAGACAAAGCTACATTCGGACAGTTACACGACATAGGTGCCTTCCCCGGGCTGCC    *   rl:i:0
-    ## 2    4   *   0   0   *   *   0   0   CAAGGAATCACAGGTCCGGGCTACGTCGCCCCTCCACAGTGTTACAAACCTGCGAACAAGTTGTTCGATCTACCTCGCATAGCCCATTACTGCATGTTAA    *   rl:i:0
-    ## 3    4   *   0   0   *   *   0   0   GCGTTTCGTTGGCCGATTCTTTCAGACACATGCACCGTCGAAACACGTTCCTACTTCGGTGAACACGCCTCTTTAGGAGGAGTTCCAGTTACCTTAACTT    *   rl:i:0
-    ## 4    4   *   0   0   *   *   0   0   TGCACTCTCCGGCGGCGCATCCACCAGAAACGCCCGCATCATTTATAACTGCGACGCCGAGACGTGATTTGCTCACAGGGCGTTAGGTTGCACAAGTTTC    *   rl:i:0
-    ## 5    4   *   0   0   *   *   0   0   GCCAATATTCACAGCCTCTAGCGGGTATGGGCCTGCCTTTATATCCGATCAAGGCCGTGCCACCAGGCATCTGCCGATTTGTTATCAGCGTCCGCTCTCT    *   rl:i:0
-    ## 6    4   *   0   0   *   *   0   0   GCAATTGTGACTTTCCGGATCGCAATACATCGACGTGAATAGCCAACTACCAGTAATTACCGAATTAGCCGAAGGGAGAAGCCACTGCGGAGTATGATAC    *   rl:i:0
-    ## 7    4   *   0   0   *   *   0   0   GGGACGCTGTTATCAGGATTACGTAAGAGGCATGTGTAGCAGCCCGGCGCCCCCCGTGTTATTGATCGTTAGGCCAGCGACGAGATAGCGGTTCGACTAT    *   rl:i:0
-    ## 8    4   *   0   0   *   *   0   0   AGAATGACCCTCTAAGAGATTTTTCCGAATATCAGCCGCTCATTGATCCCTACGGTCTTCCACTCAGTGACCTATGCAGAAAGATGACGAAAAGTCTGGG    *   rl:i:0
-    ## 9    4   *   0   0   *   *   0   0   TATATGCTCGTGCCGGTCGCAAGCTAGATAGACCTATCCACGCATGGGGCACATTAGATAAAATAGGTTCGACACGATGTAAAAGTTAACCGGTTACACT    *   rl:i:0
+    ## 1    4   *   0   0   *   *   0   0   AAGCTGCGCATTATATAAGGGGACGAATCATCTGGGCCATGTCACTCTACGCTGCCAACGCCAGAATCTCTGGTTAGCCTTGAATAGCCCCGCTACGATG    *   rl:i:0
+    ## 2    4   *   0   0   *   *   0   0   CGGCTGCCTAACCGCCTATAATAATACGGTCACAAACTCGCATTTTTCATGTGATCTTTACCCTTTATGGAACCATCGAACCTATACAGGTGTAGTGAGC    *   rl:i:0
+    ## 3    4   *   0   0   *   *   0   0   TTATGACACTCGTGGGGTTGGATGTATGGGGTAGATGCTCCATGTTTGTTCGCAAACTTTTTCTCACCGCTTGTAGCCTCAGCCGATACCTACCTTGCAA    *   rl:i:0
+    ## 4    4   *   0   0   *   *   0   0   GCTCGGGCTGTGTTCTTTCTGTGATGGGCAGAAGCAAGGTTTACAAGGAAAGGGCATCAAATGGATACAGATATTCTGAATTCTTGCTGTGCGAGCTAAG    *   rl:i:0
+    ## 5    4   *   0   0   *   *   0   0   AGAACCGTATCCTTTGTTGTCTTAGTCCAATCGGATCTTCCCTGCGGTTGCAGTTAAGTCCCACCGGAAGTGACTATTCCAACGACGCGGTGCATGCGGC    *   rl:i:0
+    ## 6    4   *   0   0   *   *   0   0   GTACACGGAAGCCTTGAGAAGCTTGTGTAAGGTTAGGTAGCCTCGCGCGAAGACCACCAGTCAGTTATTTGAGGCTGCGTTGGCCTGGCTGGGCATATGT    *   rl:i:0
+    ## 7    4   *   0   0   *   *   0   0   GTCTGACAGCCCGTTTGGGTAGAGCCCGAAGCCATGTTGGCCGCCGGCTGCGTCTTGCACCACTTGTTGTGGTATTCGAACCTTAAATTCTTGGAGCGAG    *   rl:i:0
+    ## 8    4   *   0   0   *   *   0   0   GTTCAATAGTATCCATAGGCAGAAATAACGAAGTCCTACATTGCCACAAGACCAGAATTGGTTTACAACCATTCGGGCTATCGGCTAGTTCGTTCGGCAC    *   rl:i:0
+    ## 9    4   *   0   0   *   *   0   0   GCTTAGTTACGACGTATGCTGAAGGCATGCTGCTTATTGTTACGGAAAAGGGCGAATATCGGTCGACGCCGGCCCATGGGCTGAGGTCAGGACAAGCGCA    *   rl:i:0
 
-Report up to 2,000 secondary alignments works!
+Report up to 3,500 secondary alignments works!
 
     l=100
-    r=2000
+    r=3500
     ../script/create_ref_se.pl -l ${l} -r ${r}
     minimap2 -N ${r} -a l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null \
        | grep -v "^@" \
@@ -229,19 +229,19 @@ Report up to 2,000 secondary alignments works!
        | sort -k2rn \
        | head
 
-    ## FASTA reads written to l100_r2000_reads.fa
-    ## FASTA reference written to l100_r2000_ref.fa
+    ## FASTA reads written to l100_r3500_reads.fa
+    ## FASTA reference written to l100_r3500_ref.fa
     ## Done
-    ##    2000 2000
-    ##    1999 1999
-    ##    1998 1998
-    ##    1997 1997
-    ##    1996 1996
-    ##    1995 1995
-    ##    1994 1994
-    ##    1993 1993
-    ##    1992 1992
-    ##    1991 1991
+    ##    3500 3500
+    ##    3499 3499
+    ##    3498 3498
+    ##    3497 3497
+    ##    3496 3496
+    ##    3495 3495
+    ##    3494 3494
+    ##    3493 3493
+    ##    3492 3492
+    ##    3491 3491
 
 We will repeat the mapping step 100 times to test whether reported loci
 are randomly selected. We have also set `-N` to 100 to report up to 100
@@ -258,7 +258,7 @@ chosen.
        minimap2 -N ${r} -a l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null
     done | grep $'^20\t0' | sort | uniq -c
 
-    ##     100 20   0   ref 62001   0   100M    *   0   0   ATGTGGTTACTGGACCTAGCGATTGTAGCTCCGAATGGTCATAAATACCCACGACACCGTCGTCAGTGGAGCCGGGTTAAACCTCCTGCTAGTGTATGCG    *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:P  cm:i:16 s1:i:98 s2:i:98 de:f:0  rl:i:0
+    ##     100 20   0   ref 57501   0   100M    *   0   0   GGTGTCAGACGCTCCTTCACCCTTCGTCACCAGGGGCATTGCTAAGAAAAAGGATATTAACTCTAAATATGGCCCATCCCGGGGGTCGCGGCTGGGCCCG    *   NM:i:0  ms:i:200    AS:i:200    nn:i:0  tp:A:P  cm:i:17 s1:i:89 s2:i:89 de:f:0  rl:i:0
 
 Clean up.
 
