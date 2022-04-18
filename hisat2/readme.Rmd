@@ -1,0 +1,108 @@
+---
+title: "HISAT2"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+Sys.setenv(PATH=paste0(Sys.getenv("PATH"), ":", getwd()))
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+HISAT2 usage.
+
+```{bash engine.opts='-l'}
+hisat2 || true
+```
+
+Generate 100 unique reads with read lengths of 100 bp and repeat each unique read incrementally, i.e. first read is unique, second read is repeated twice, third read is repeated thrice, and so on. Next use these reads to generate a reference sequence where each read is separated by a spacer sequence that is two times the length of a read, which is 200 bp in this case.
+
+The reference sequence is first indexed and then the reads are mapped to the reference using default settings. The `-f` parameter specifies that input reads are FASTA files.
+
+```{bash engine.opts='-l'}
+l=100
+r=100
+../script/create_ref_se.pl -l ${l} -r ${r}
+hisat2-build l${l}_r${r}_ref.fa l${l}_r${r}_ref 2> /dev/null > /dev/null
+hisat2 -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa > default.sam 2> /dev/null
+```
+
+The `-k` and `--max-seeds` parameters control the reporting of multimappers.
+
+> -k <int>            It searches for at most <int> distinct, primary alignments for each read. Primary alignments mean
+>                     alignments whose alignment score is equal to or higher than any other alignments. The search terminates
+>                     when it cannot find more distinct valid alignments, or when it finds <int>, whichever happens first.
+>                     The alignment score for a paired-end alignment equals the sum of the alignment scores of
+>                     the individual mates. Each reported read or pair alignment beyond the first has the SAM ‘secondary’ bit
+>                     (which equals 256) set in its FLAGS field. For reads that have more than <int> distinct,
+>                     valid alignments, hisat2 does not guarantee that the <int> alignments reported are the best possible
+>                     in terms of alignment score. Default: 5 (linear index) or 10 (graph index).
+>                     Note: HISAT2 is not designed with large values for -k in mind, and when aligning reads to long,
+>                     repetitive genomes, large -k could make alignment much slower.
+>
+> --max-seeds <int>   HISAT2, like other aligners, uses seed-and-extend approaches. HISAT2 tries to extend seeds to
+>                     full-length alignments. In HISAT2, --max-seeds is used to control the maximum number of seeds that
+>                     will be extended. For DNA-read alignment (--no-spliced-alignment), HISAT2 extends up to these many seeds
+>                     and skips the rest of the seeds. For RNA-read alignment, HISAT2 skips extending seeds and reports
+>                     no alignments if the number of seeds is larger than the number specified with the option,
+>                     to be compatible with previous versions of HISAT2. Large values for --max-seeds may improve alignment
+>                     sensitivity, but HISAT2 is not designed with large values for --max-seeds in mind, and when aligning
+>                     reads to long, repetitive genomes, large --max-seeds could make alignment much slower.
+>                     The default value is the maximum of 5 and the value that comes with -k times 2.
+
+Reads are mapped up to 5 times as stated above.
+
+```{bash engine.opts='-l'}
+cat default.sam | grep -v "^@" | cut -f1 | sort | uniq -c | sort -k2n | head
+```
+
+The `-k` parameter will report all alignments!
+
+> -a/--all           HISAT2 reports all alignments it can find. Using the option is equivalent to using both --max-seeds
+>                    and -k with the maximum value that a 64-bit signed integer can represent (9,223,372,036,854,775,807).
+
+```{bash engine.opts='-l'}
+l=100
+r=100
+hisat2 -a -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa 2> /dev/null \
+   | grep -v "^@" \
+   | cut -f1 \
+   | sort \
+   | uniq -c \
+   | sort -k2rn \
+   | head
+```
+
+We will repeat the mapping step 100 times to test whether reported loci are randomly selected. The reported mapping of read `100` is always the same.
+
+```{bash engine.opts='-l'}
+l=100
+r=100
+for i in {1..100}; do
+   hisat2 -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa 2> /dev/null
+done | grep $'^100\t0' | sort | uniq -c
+```
+
+HISAT2 can map up to 3,500 loci (and more!).
+
+```{bash engine.opts='-l'}
+l=100
+r=3500
+../script/create_ref_se.pl -l ${l} -r ${r}
+hisat2-build -p 8 l${l}_r${r}_ref.fa l${l}_r${r}_ref 2> /dev/null > /dev/null
+hisat2 -a -p 8 -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa > r${r}.sam 2> /dev/null
+
+cat r${r}.sam | grep -v "^@" | cut -f1 | sort | uniq -c | sort -k2rn | head
+```
+
+Clean up.
+
+```{bash engine.opts='-l'}
+rm *.fa *.ht2 *.sam
+```
+
+HISAT2 version used for this README.
+
+```{bash engine.opts='-l'}
+hisat2 --version
+```
+
