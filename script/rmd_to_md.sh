@@ -58,7 +58,6 @@ fi
 USERID=$(id -u)
 GROUPID=$(id -g)
 
-
 cd $(dirname $0)/..
 
 docker run \
@@ -67,7 +66,7 @@ docker run \
    -v $(pwd):$(pwd) \
    -w $(pwd) \
    ${docker_image} \
-   /usr/bin/env bash -c "Rscript -e \"rmarkdown::render('${infile_dir}/${infile}', output_file = '${outfile}')\" && chown ${USERID}:${GROUPID} ${outfile}"
+   /usr/bin/env bash -c "Rscript -e \"rmarkdown::render('${infile_dir}/${infile}', output_file = '${outfile}')\" && chown ${USERID}:${GROUPID} ${infile_dir}/${outfile}"
 
 >&2 printf "\n[ %s %s ] Work complete\n" $(now)
 
