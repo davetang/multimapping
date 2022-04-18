@@ -4,6 +4,12 @@ MAINTAINER Dave Tang <me@davetang.org>
 
 LABEL source="https://github.com/davetang/multimapping/blob/main/Dockerfile"
 
+RUN apt-get update \
+      && apt-get install -y \
+         jellyfish \
+      && apt-get clean all \
+      && rm -rf /var/lib/apt/lists/*
+
 ARG bwa_ver=0.7.17
 RUN cd /tmp && \
     wget https://github.com/lh3/bwa/releases/download/v${bwa_ver}/bwa-${bwa_ver}.tar.bz2 && \
@@ -23,15 +29,14 @@ RUN cd /tmp && \
     rm -rf /tmp/*
 
 ARG hisat2_ver=2.2.1
-RUN cd /usr/src && \
+RUN cd /opt/ && \
     wget https://cloud.biohpc.swmed.edu/index.php/s/fE9QCsX3NH4QwBi/download -O hisat2-source.zip && \
     unzip hisat2-source.zip && \
     cd hisat2-${hisat2_ver} && \
     make && \
     cd .. && \
-    rm hisat2-source.zip && \
-    cd /usr/local/bin && \
-    ln -s /usr/src/hisat2-${hisat2_ver}/hisat2 .
+    rm hisat2-source.zip
+ENV PATH=${PATH}:/opt/hisat2-${hisat2_ver}
 
 ARG star_ver=2.7.10a
 RUN cd /usr/src && \
@@ -42,4 +47,20 @@ RUN cd /usr/src && \
     make STAR && \
     cd /usr/local/bin && \
     ln -s /usr/src/STAR-${star_ver}/source/STAR .
+
+ARG kallisto_ver=0.48.0
+RUN cd /tmp/ && \
+    wget https://github.com/pachterlab/kallisto/archive/refs/tags/v${kallisto_ver}.tar.gz && \
+    tar xzf v${kallisto_ver}.tar.gz && \
+    cd kallisto-${kallisto_ver} && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
+    make install && \
+    cd && \
+    rm -rf /tmp/*
+ 
+# use Python3
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
