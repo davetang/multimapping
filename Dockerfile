@@ -7,6 +7,7 @@ LABEL source="https://github.com/davetang/multimapping/blob/main/Dockerfile"
 RUN apt-get update \
       && apt-get install -y \
          jellyfish \
+         bc \
       && apt-get clean all \
       && rm -rf /var/lib/apt/lists/*
 
