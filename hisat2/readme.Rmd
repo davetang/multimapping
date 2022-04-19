@@ -55,7 +55,7 @@ Reads are mapped up to 5 times as stated above.
 cat default.sam | grep -v "^@" | cut -f1 | sort | uniq -c | sort -k2n | head
 ```
 
-The `-k` parameter will report all alignments!
+The `-a` parameter will report all alignments that can be found!
 
 > -a/--all           HISAT2 reports all alignments it can find. Using the option is equivalent to using both --max-seeds
 >                    and -k with the maximum value that a 64-bit signed integer can represent (9,223,372,036,854,775,807).
@@ -78,7 +78,7 @@ We will repeat the mapping step 100 times to test whether reported loci are rand
 l=100
 r=100
 for i in {1..100}; do
-   hisat2 -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa 2> /dev/null
+   hisat2 -a -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa 2> /dev/null
 done | grep $'^100\t0' | sort | uniq -c
 ```
 

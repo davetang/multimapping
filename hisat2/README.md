@@ -213,7 +213,7 @@ Reads are mapped up to 5 times as stated above.
     ##       5 9
     ##       5 10
 
-The `-k` parameter will report all alignments!
+The `-a` parameter will report all alignments that can be found!
 
 > -a/–all HISAT2 reports all alignments it can find. Using the option is
 > equivalent to using both –max-seeds and -k with the maximum value that
@@ -250,7 +250,7 @@ same.
        hisat2 -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa 2> /dev/null
     done | grep $'^100\t0' | sort | uniq -c
 
-    ##     100 100  0   ref 1510701 1   100M    *   0   0   TCAAACGTTTCAGGACCCTTTAGTCAATTCCCAGGAGTCAGGTGCCTAAATCGCAGCCACTCAACTACAGCACGATAAAGAAGGCTAACTCTAGTGTCAA    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII    AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:100    YT:Z:UU NH:i:5
+    ##     100 100  0   ref 1487001 1   100M    *   0   0   ATGTGATCTAGTCAAGCTATTAGCACATAATAGTGCCTCCGGGAAAGGTTAGTAGGGTGCCACCACATCCTGAGTGAGCCACCGTCCGCTCGCGGTAACA    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII    AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:100    YT:Z:UU NH:i:5
 
 HISAT2 can map up to 3,500 loci (and more!).
 
