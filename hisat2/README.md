@@ -247,10 +247,10 @@ same.
     l=100
     r=100
     for i in {1..100}; do
-       hisat2 -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa 2> /dev/null
+       hisat2 -a -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa 2> /dev/null
     done | grep $'^100\t0' | sort | uniq -c
 
-    ##     100 100  0   ref 1487001 1   100M    *   0   0   ATGTGATCTAGTCAAGCTATTAGCACATAATAGTGCCTCCGGGAAAGGTTAGTAGGGTGCCACCACATCCTGAGTGAGCCACCGTCCGCTCGCGGTAACA    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII    AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:100    YT:Z:UU NH:i:5
+    ##     100 100  0   ref 1512201 1   100M    *   0   0   GATAAGACATTCGGTCCGTCCTGTTAGCTCCATCATACGGGCTGAACACGATTTACTGGCTCCTTCGGAATACGCCGCCAGAATAAATAGGCGTGAATCC    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII    AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:100    YT:Z:UU NH:i:100
 
 HISAT2 can map up to 3,500 loci (and more!).
 
@@ -286,8 +286,8 @@ HISAT2 version used for this README.
 
     ## /opt/hisat2-2.2.1/hisat2-align-s version 2.2.1
     ## 64-bit
-    ## Built on 20e39a18ff1e
-    ## Mon 18 Apr 2022 02:27:15 AM UTC
+    ## Built on 2fc4bb9bdc13
+    ## Tue 19 Apr 2022 02:47:26 AM UTC
     ## Compiler: gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1) 
     ## Options: -O3 -m64 -msse2 -funroll-loops -g3 -DPOPCNT_CAPABILITY -std=c++11
     ## Sizeof {int, long, long long, void*, size_t, off_t}: {4, 8, 8, 8, 8, 8}
