@@ -1,0 +1,55 @@
+---
+title: "Jellyfish _k_-mers"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+Sys.setenv(PATH=paste0(Sys.getenv("PATH"), ":", getwd()))
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Download chromosome X (if necessary).
+
+```{bash engine.opts='-l'}
+if [[ ! -e chrX.fa.gz ]]; then
+   wget --quiet https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/chrX.fa.gz
+fi
+
+if [[ ! -e chrX.fa ]]; then
+   gunzip chrX.fa.gz
+fi
+```
+
+Run Jellyfish with the following parameters:
+
+* `-m` - Length of mer
+* `-s` - Initial hash size
+* `-t` - Number of threads
+* `-C` - Count both strand, canonical representation (false)
+
+and output as FASTA.
+
+```{bash engine.opts='-l'}
+jellyfish count -m 100 -s 100M -t 8 -C chrX.fa
+jellyfish dump mer_counts.jf > mer_counts_dumps.fa
+```
+
+Create FASTA with one representative for _k_-mer number.
+
+```{bash engine.opts='-l'}
+../script/jellyfish_rep.pl mer_counts_dumps.fa | gzip > chrx_kmer.fa.gz
+```
+
+Clean up.
+
+```{bash engine.opts='-l'}
+rm mer_counts_dumps.fa mer_counts.jf
+gzip chrX.fa
+```
+
+Jellyfish version used for this README.
+
+```{bash engine.opts='-l'}
+jellyfish --version
+```
+
