@@ -1,6 +1,8 @@
 ---
 title: "Minimap2"
 output: md_document
+params:
+   clean_up: TRUE
 ---
 
 ```{r setup, include=FALSE}
@@ -156,7 +158,7 @@ minimap2 -ax sr -t 8 -N 500 chrx.mmi ../data/chrx_kmer.fa.gz 2> /dev/null \
 
 Clean up.
 
-```{bash engine.opts='-l'}
+```{bash engine.opts='-l', eval=params$clean_up}
 rm *.sam *.fa core* *.mmi
 ```
 

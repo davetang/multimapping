@@ -1,6 +1,8 @@
 ---
 title: "STAR"
 output: md_document
+params:
+   clean_up: TRUE
 ---
 
 ```{r setup, include=FALSE}

@@ -1,6 +1,8 @@
 ---
 title: "HISAT2"
 output: md_document
+params:
+   clean_up: TRUE
 ---
 
 ```{r setup, include=FALSE}
