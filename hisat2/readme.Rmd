@@ -100,11 +100,29 @@ Mapping repetitive reads to chromosome X.
 gunzip -c ../data/chrX.fa.gz > chrX.fa
 hisat2-build chrX.fa chrx 2> /dev/null > /dev/null
 gunzip -c ../data/chrx_kmer.fa.gz > chrx_kmer.fa
-hisat2 -f -a -x chrx chrx_kmer.fa 2> /dev/null \
+hisat2 -f -a -x chrx chrx_kmer.fa 2> /dev/null > chrx.sam
+```
+
+Reads repeating up to 10 times are mapped as expected.
+
+```{bash engine.opts='-l'}
+cat chrx.sam \
    | grep -v "^@" \
    | cut -f1 \
    | sort -n \
    | uniq -c \
+   | head
+```
+
+Reads repeating up to $n$ times are also mapped as expected!
+
+```{bash engine.opts='-l'}
+cat chrx.sam \
+   | grep -v "^@" \
+   | cut -f1 \
+   | sort -n \
+   | uniq -c \
+   | sort -k2rn \
    | head
 ```
 

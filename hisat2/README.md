@@ -250,7 +250,7 @@ same.
        hisat2 -a -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa 2> /dev/null
     done | grep $'^100\t0' | sort | uniq -c
 
-    ##     100 100  0   ref 1494501 1   100M    *   0   0   GTTTGTTCCCGGTGCAGAAAGGTCTCCATCTCGTGTGAGTGGCCTAGCTAATCTGTGGATTATGAGTTCTGATCGAAAAGAAATTCGTTCAAGATGACCT    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII    AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:100    YT:Z:UU NH:i:100
+    ##     100 100  0   ref 1493001 1   100M    *   0   0   TCCTTGGTTTTAACAGACATATGAATGGCGCCTGGGACAGGCTACCGCTATATCACTAGTCATCAAAACCAGACTGACGAATATTGGGTCGTTCACCAAA    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII    AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:100    YT:Z:UU NH:i:100
 
 HISAT2 can map up to 3,500 loci (and more!).
 
@@ -281,7 +281,11 @@ Mapping repetitive reads to chromosome X.
     gunzip -c ../data/chrX.fa.gz > chrX.fa
     hisat2-build chrX.fa chrx 2> /dev/null > /dev/null
     gunzip -c ../data/chrx_kmer.fa.gz > chrx_kmer.fa
-    hisat2 -f -a -x chrx chrx_kmer.fa 2> /dev/null \
+    hisat2 -f -a -x chrx chrx_kmer.fa 2> /dev/null > chrx.sam
+
+Reads repeating up to 10 times are mapped as expected.
+
+    cat chrx.sam \
        | grep -v "^@" \
        | cut -f1 \
        | sort -n \
@@ -298,6 +302,27 @@ Mapping repetitive reads to chromosome X.
     ##       8 8
     ##       9 9
     ##      10 10
+
+Reads repeating up to *n* times are also mapped as expected!
+
+    cat chrx.sam \
+       | grep -v "^@" \
+       | cut -f1 \
+       | sort -n \
+       | uniq -c \
+       | sort -k2rn \
+       | head
+
+    ##    1470 1470
+    ##    1469 1469
+    ##    1468 1468
+    ##    1467 1467
+    ##    1465 1465
+    ##    1463 1463
+    ##    1452 1452
+    ##    1449 1449
+    ##    1448 1448
+    ##    1447 1447
 
 Clean up.
 
