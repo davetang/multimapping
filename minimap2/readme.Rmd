@@ -120,10 +120,44 @@ for i in {1..100}; do
 done | grep $'^20\t0' | sort | uniq -c
 ```
 
+Mapping repetitive reads to chromosome X, retaining up to 500 additional loci. However, some reads are uniquely mapped such as read `5`.
+
+```{bash engine.opts='-l'}
+minimap2 -t 8 -N 500 -a ../data/chrX.fa.gz ../data/chrx_kmer.fa.gz 2> /dev/null \
+   | grep -v "^@" \
+   | cut -f1 \
+   | sort -n \
+   | uniq -c \
+   | head
+```
+
+Re-mapping with an index generates the same results for the first couple of reads.
+
+```{bash engine.opts='-l'}
+minimap2 -d chrx.mmi ../data/chrX.fa.gz 2> /dev/null
+minimap2 -t 8 -N 500 -a chrx.mmi ../data/chrx_kmer.fa.gz 2> /dev/null \
+   | grep -v "^@" \
+   | cut -f1 \
+   | sort -n \
+   | uniq -c \
+   | head
+```
+
+Note that using the short read mode eliminates secondary alignments!
+
+```{bash engine.opts='-l'}
+minimap2 -ax sr -t 8 -N 500 chrx.mmi ../data/chrx_kmer.fa.gz 2> /dev/null \
+   | grep -v "^@" \
+   | cut -f1 \
+   | sort -n \
+   | uniq -c \
+   | head
+```
+
 Clean up.
 
 ```{bash engine.opts='-l'}
-rm *.sam *.fa core*
+rm *.sam *.fa core* *.mmi
 ```
 
 Minimap2 version used for this README.
