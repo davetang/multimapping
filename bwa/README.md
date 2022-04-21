@@ -99,14 +99,14 @@ coordinates smaller than the reported location.
 
     ## @SQ  SN:ref  LN:1515200
     ## @PG  ID:bwa  PN:bwa  VN:0.7.17-r1188 CL:bwa mem l100_r100_ref.fa l100_r100_reads.fa
-    ## 1    0   ref 201 60  100M    *   0   0   GCCTTTGTTAGGAGAATATCTAGGTGCAATATTGATGCCGATCACGTCTTCCAATAACCAGCGCTCGTATCAGCATGGTTAATCTGTTGCTCGAAGGCGA    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:0
-    ## 2    0   ref 501 0   100M    *   0   0   GCCTGGCTATACCTTAGAGCTCCGGAGAACGCTGCCGAATGTCCGCATAAACACCGAAGTGAGGTGAGGGGAAAAGGCGTGACTTGTCTCGGACCATGAC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+801,100M,0;
-    ## 3    0   ref 1701    0   100M    *   0   0   GATAAGACATTCGGTCCGTCCTGTTAGCTCCATCATACGGGCTGAACACGATTTACTGGCTCCTTCGGAATACGCCGCCAGAATAAATAGGCGTGAATCC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+1101,100M,0;ref,+1401,100M,0;
-    ## 4    0   ref 2901    0   100M    *   0   0   CCTGAGAACTTAGCCAACATGCACTAGGCCGGGTTAAGCCACCGGGCAATTGACTCCAGACGTGGGAGGACAGAACATCTCGCTTTGGAGTCGCGTTAAT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+2301,100M,0;ref,+2601,100M,0;ref,+2001,100M,0;
-    ## 5    0   ref 3801    0   100M    *   0   0   AGATCCTTGATTCTCGTTATACTTTACCCAGTTCGTCAGAACTCTTCTTTGCATAAACCTAATCCGCCGGGAACAGGCTGGCAGTCAACCTGTAAAATGC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+3201,100M,0;ref,+4401,100M,0;ref,+3501,100M,0;ref,+4101,100M,0;
-    ## 6    0   ref 5901    0   100M    *   0   0   TCTACCTCACATCGCAAGACCAGCCCCAGAATGGTTAAGTTATAACGGAATTATAAAAGCGGTTGGACGGGTAGACGTTAAAGGTTTTGACCTGCTAAAC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+5001,100M,0;ref,+5601,100M,0;ref,+4701,100M,0;ref,+6201,100M,0;ref,+5301,100M,0;
-    ## 7    0   ref 7401    0   100M    *   0   0   AACCAGGAACTTTCGGAAGCTCTTAGACGCAGCGCTTGTGCTCCCGCATCGGGGCAGTATTCGATACATCGTTAAACAAGGATTGACATATTTGGCTCTG    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100
-    ## 8    0   ref 9201    0   100M    *   0   0   AATCGCAAGTTTTGACTGTTGTGGCGTGCGTGTGGCAATGACACAGACTCTCTCTAACATTATTCACCGCTAAAAAACCTTCGACCCGTGATGCAAAGAT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100
+    ## 1    0   ref 201 60  100M    *   0   0   ATTACGCTTCGCGTTTACATTGACCCAGAGCTGTTTTACCCAGAGTAGCTGTGGGTCACATGGATATCGTTGTTTGTTACTCGGCTACGCCGCTGTGTAC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:0
+    ## 2    0   ref 501 0   100M    *   0   0   CCTGAGAACTTAGCCAACATGCACTAGGCCGGGTTAAGCCACCGGGCAATTGACTCCAGACGTGGGAGGACAGAACATCTCGCTTTGGAGTCGCGTTAAT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+801,100M,0;
+    ## 3    0   ref 1701    0   100M    *   0   0   ATCGGGCTGCGTGGATAACAAGCTTCAGTGCAATACGCAATAGGCACAGTTAGCGACATTCCCCATCAGTAATCGAGCGTGTACAAGATCGGCCGAAGAT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+1101,100M,0;ref,+1401,100M,0;
+    ## 4    0   ref 2901    0   100M    *   0   0   TTGCATGCCCCAGAGCGACCCCAGTCCTGAACCGGCCCAGCCCCGGGCACTATCCAATCAAAATCTGGTGCGACAACGCAGGTCGGGTTGCTTAACGGAT    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+2301,100M,0;ref,+2601,100M,0;ref,+2001,100M,0;
+    ## 5    0   ref 3801    0   100M    *   0   0   TGAGTATATTAACTAATCACAGGATGAGGCGCCCCTAAAGGTACTCCATTTTAGCTAGGCACACCATAATCCGTTAGGTCGCTGTCGGTCTACATTGCGG    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+3201,100M,0;ref,+4401,100M,0;ref,+3501,100M,0;ref,+4101,100M,0;
+    ## 6    0   ref 5901    0   100M    *   0   0   TGACACGTAACACCGCATAACCTGTCAGATCAATATTAAAGAACGTCGACTACCCCGCCCTCATATGACTGCTCCGGGGGCACTCTCTGTAGCAGCCCCA    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+5001,100M,0;ref,+5601,100M,0;ref,+4701,100M,0;ref,+6201,100M,0;ref,+5301,100M,0;
+    ## 7    0   ref 7401    0   100M    *   0   0   TTATGCGCCCTTGGTCGCACTAAAAGAACGACCGATGGGCACAAAGTACATGGATCACTTGAATGGACTAAAGAAGGTCTCGTCCTCACCGTTACGGAGC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100
+    ## 8    0   ref 9201    0   100M    *   0   0   ACACGTGGGCGATAGCTGGCAGACGTGCCACCTTCTATGCTGACTTGGCATGCTCGGCAACCGTTAGCCTTGAGAACAATACGCCAAGAAGGCGTGCAGC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100
 
 We will repeat the mapping step 100 times to test whether reported loci
 are randomly selected. We have also set `-h` to 20 to report up to 20
@@ -123,7 +123,7 @@ chosen.
        bwa mem -h 20 l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null
     done | grep ^20 | sort | uniq -c
 
-    ##     100 20   0   ref 62301   0   100M    *   0   0   ATTACGCTTCGCGTTTACATTGACCCAGAGCTGTTTTACCCAGAGTAGCTGTGGGTCACATGGATATCGTTGTTTGTTACTCGGCTACGCCGCTGTGTAC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+57801,100M,0;ref,+57201,100M,0;ref,+61701,100M,0;ref,+59901,100M,0;ref,+59601,100M,0;ref,+61401,100M,0;ref,+58101,100M,0;ref,+58401,100M,0;ref,+60201,100M,0;ref,+59301,100M,0;ref,+61101,100M,0;ref,+62001,100M,0;ref,+59001,100M,0;ref,+60501,100M,0;ref,+62601,100M,0;ref,+58701,100M,0;ref,+60801,100M,0;ref,+57501,100M,0;ref,+62901,100M,0;
+    ##     100 20   0   ref 62301   0   100M    *   0   0   ACTCTGACGCCCAAATATAAAGGAAGCGGCGTGCGATGAGAGTGCGTGGTGCGTTGAATGCCTCTAGTGCGGAATGGGCCGACTGCGGGTGTCGGCGCAC    *   NM:i:0  MD:Z:100    AS:i:100    XS:i:100    XA:Z:ref,+57801,100M,0;ref,+57201,100M,0;ref,+61701,100M,0;ref,+59901,100M,0;ref,+59601,100M,0;ref,+61401,100M,0;ref,+58101,100M,0;ref,+58401,100M,0;ref,+60201,100M,0;ref,+59301,100M,0;ref,+61101,100M,0;ref,+62001,100M,0;ref,+59001,100M,0;ref,+60501,100M,0;ref,+62601,100M,0;ref,+58701,100M,0;ref,+60801,100M,0;ref,+57501,100M,0;ref,+62901,100M,0;
 
 We will generate a read that repeats up to 505 times. The `-c` parameter
 will skip regions that occur 500 times by default and thus a read will
@@ -204,9 +204,31 @@ BWA MEM works for 3,500 additional loci but fails for 4,000.
     ## 3499 3499
     ## 3500 3500
 
+Mapping repetitive reads to chromosome X, retaining up to 1500
+additional loci.
+
+    r=1500
+    gunzip -c ../data/chrX.fa.gz > chrX.fa
+    bwa index chrX.fa 2> /dev/null
+    bwa mem -h ${r} -c ${r} chrX.fa ../data/chrx_kmer.fa.gz 2> /dev/null > chrx.sam
+
+Save mapping profile to `chrx.tsv`.
+
+    cat chrx.sam \
+       | grep -v "^@" \
+       | cut -f1,16 \
+       | perl -lane '@c = $_ =~ /chrX/g; print $F[0], "\t", scalar @c + 1' > chrx.tsv
+
+Plot mapping profile.
+
+    my_table <- read.delim('chrx.tsv', header = FALSE)
+    plot(my_table, xlab = "Expected", ylab = "Observed", main = "Mapping repetitive reads with BWA MEM")
+
+![](img/exp_vs_obs-1.png)
+
 Clean up.
 
-    rm *.sam *.fa *.fa.amb *.fa.ann *.fa.bwt *.fa.pac *.fa.sa
+    rm *.sam *.fa *.fa.amb *.fa.ann *.fa.bwt *.fa.pac *.fa.sa *.tsv
 
 BWA version used for this README.
 

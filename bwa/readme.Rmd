@@ -1,11 +1,14 @@
 ---
 title: "BWA"
 output: md_document
+params:
+   clean_up: TRUE
 ---
 
 ```{r setup, include=FALSE}
 Sys.setenv(PATH=paste0(Sys.getenv("PATH"), ":", getwd()))
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path = "img/")
 ```
 
 BWA MEM usage.
@@ -88,10 +91,35 @@ bwa mem -h ${r} -c ${r} l${l}_r${r}_ref.fa l${l}_r${r}_reads.fa 2> /dev/null > r
 cat r${r}.sam | cut -f1,16 | perl -lane '@c = $_ =~ /ref/g; print $F[0], "\t", scalar @c + 1' | tail
 ```
 
-Clean up.
+Mapping repetitive reads to chromosome X, retaining up to 1500 additional loci.
 
 ```{bash engine.opts='-l'}
-rm *.sam *.fa *.fa.amb *.fa.ann *.fa.bwt *.fa.pac *.fa.sa
+r=1500
+gunzip -c ../data/chrX.fa.gz > chrX.fa
+bwa index chrX.fa 2> /dev/null
+bwa mem -h ${r} -c ${r} chrX.fa ../data/chrx_kmer.fa.gz 2> /dev/null > chrx.sam
+```
+
+Save mapping profile to `chrx.tsv`.
+
+```{bash engine.opts='-l'}
+cat chrx.sam \
+   | grep -v "^@" \
+   | cut -f1,16 \
+   | perl -lane '@c = $_ =~ /chrX/g; print $F[0], "\t", scalar @c + 1' > chrx.tsv
+```
+
+Plot mapping profile.
+
+```{r exp_vs_obs}
+my_table <- read.delim('chrx.tsv', header = FALSE)
+plot(my_table, xlab = "Expected", ylab = "Observed", main = "Mapping repetitive reads with BWA MEM")
+```
+
+Clean up.
+
+```{bash engine.opts='-l', eval=params$clean_up}
+rm *.sam *.fa *.fa.amb *.fa.ann *.fa.bwt *.fa.pac *.fa.sa *.tsv
 ```
 
 BWA version used for this README.
