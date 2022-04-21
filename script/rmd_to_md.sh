@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+# set to FALSE to keep generated files
+clean_up=TRUE
 num_param=1
 
 usage(){
@@ -66,7 +68,7 @@ docker run \
    -v $(pwd):$(pwd) \
    -w $(pwd) \
    ${docker_image} \
-   /usr/bin/env bash -c "Rscript -e \"rmarkdown::render('${infile_dir}/${infile}', output_file = '${outfile}')\" && chown ${USERID}:${GROUPID} ${infile_dir}/${outfile}"
+   /usr/bin/env bash -c "Rscript -e \"rmarkdown::render('${infile_dir}/${infile}', params = list(clean_up = \"${clean_up}\"), output_file = '${outfile}')\" && chown ${USERID}:${GROUPID} ${infile_dir}/${outfile}"
 
 >&2 printf "\n[ %s %s ] Work complete\n" $(now)
 
