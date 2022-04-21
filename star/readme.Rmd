@@ -167,10 +167,45 @@ STAR --runMode alignReads \
 cat default*.sam | grep "^5"
 ```
 
+Map repetitive reads to chrX.
+
+```{bash engine.opts='-l'}
+gunzip -c ../data/chrX.fa.gz > chrX.fa
+
+STAR \
+   --runMode genomeGenerate \
+   --genomeDir chrx \
+   --genomeFastaFiles chrX.fa \
+   --genomeSAindexNbases 12 \
+   --runThreadN 8 > /dev/null
+
+STAR --runMode alignReads \
+   --genomeDir chrx \
+   --outFilterMultimapNmax 1000 \
+   --winAnchorMultimapNmax 1000 \
+   --seedPerWindowNmax 1000 \
+   --readFilesCommand "gunzip -c" \
+   --readFilesIn ../data/chrx_kmer.fa.gz \
+   --outFileNamePrefix chrx. \
+   --runThreadN 8 > /dev/null
+```
+
+Reads repeating up to 10 times are mapped as expected.
+
+```{bash engine.opts='-l'}
+cat chrx.Aligned.out.sam | grep -v "^@" | cut -f1 | sort | uniq -c | sort -k2n | head
+```
+
+However reads repeating up to 1,000 times are not mapped to all their loci. In addition, note that reads mapping over 1,000 times are discarded (therefore STAR does map up to 1,000 times but it just does not report all the loci with the provided parameters).
+
+```{bash engine.opts='-l'}
+cat chrx.Aligned.out.sam | grep -v "^@" | cut -f1 | sort | uniq -c | sort -k2rn | head
+```
+
 Clean up.
 
 ```{bash engine.opts='-l'}
-rm -rf *.sam *.fa star_idx *.out *.out.tab
+rm -rf *.sam *.fa star_idx chrx *.out *.out.tab
 ```
 
 STAR version used for this README.
