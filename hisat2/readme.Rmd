@@ -94,6 +94,20 @@ hisat2 -a -p 8 -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa > r${r}.sam 2> /dev/nu
 cat r${r}.sam | grep -v "^@" | cut -f1 | sort | uniq -c | sort -k2rn | head
 ```
 
+Mapping repetitive reads to chromosome X.
+
+```{bash engine.opts='-l'}
+gunzip -c ../data/chrX.fa.gz > chrX.fa
+hisat2-build chrX.fa chrx 2> /dev/null > /dev/null
+gunzip -c ../data/chrx_kmer.fa.gz > chrx_kmer.fa
+hisat2 -f -a -x chrx chrx_kmer.fa 2> /dev/null \
+   | grep -v "^@" \
+   | cut -f1 \
+   | sort -n \
+   | uniq -c \
+   | head
+```
+
 Clean up.
 
 ```{bash engine.opts='-l'}

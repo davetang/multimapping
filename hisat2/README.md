@@ -250,7 +250,7 @@ same.
        hisat2 -a -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa 2> /dev/null
     done | grep $'^100\t0' | sort | uniq -c
 
-    ##     100 100  0   ref 1512201 1   100M    *   0   0   GATAAGACATTCGGTCCGTCCTGTTAGCTCCATCATACGGGCTGAACACGATTTACTGGCTCCTTCGGAATACGCCGCCAGAATAAATAGGCGTGAATCC    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII    AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:100    YT:Z:UU NH:i:100
+    ##     100 100  0   ref 1494501 1   100M    *   0   0   GTTTGTTCCCGGTGCAGAAAGGTCTCCATCTCGTGTGAGTGGCCTAGCTAATCTGTGGATTATGAGTTCTGATCGAAAAGAAATTCGTTCAAGATGACCT    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII    AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:100    YT:Z:UU NH:i:100
 
 HISAT2 can map up to 3,500 loci (and more!).
 
@@ -275,6 +275,29 @@ HISAT2 can map up to 3,500 loci (and more!).
     ##    3493 3493
     ##    3492 3492
     ##    3491 3491
+
+Mapping repetitive reads to chromosome X.
+
+    gunzip -c ../data/chrX.fa.gz > chrX.fa
+    hisat2-build chrX.fa chrx 2> /dev/null > /dev/null
+    gunzip -c ../data/chrx_kmer.fa.gz > chrx_kmer.fa
+    hisat2 -f -a -x chrx chrx_kmer.fa 2> /dev/null \
+       | grep -v "^@" \
+       | cut -f1 \
+       | sort -n \
+       | uniq -c \
+       | head
+
+    ##       1 1
+    ##       2 2
+    ##       3 3
+    ##       4 4
+    ##       5 5
+    ##       6 6
+    ##       7 7
+    ##       8 8
+    ##       9 9
+    ##      10 10
 
 Clean up.
 
