@@ -113,7 +113,8 @@ Plot mapping profile.
 
 ```{r exp_vs_obs}
 my_table <- read.delim('chrx.tsv', header = FALSE)
-plot(my_table, xlab = "Expected", ylab = "Observed", main = "Mapping repetitive reads with BWA MEM")
+plot(my_table, xlab = "Expected", ylab = "Observed", main = "Mapping repetitive reads with BWA MEM", pch = 16)
+abline(0, 1, lty = 2, col = 2)
 ```
 
 Clean up.
