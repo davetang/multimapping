@@ -8,6 +8,7 @@ params:
 ```{r setup, include=FALSE}
 Sys.setenv(PATH=paste0(Sys.getenv("PATH"), ":", getwd()))
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path = "img/")
 ```
 
 HISAT2 usage.
@@ -105,7 +106,7 @@ gunzip -c ../data/chrx_kmer.fa.gz > chrx_kmer.fa
 hisat2 -f -a -x chrx chrx_kmer.fa 2> /dev/null > chrx.sam
 ```
 
-Reads repeating up to 10 times are mapped as expected.
+Save map tally.
 
 ```{bash engine.opts='-l'}
 cat chrx.sam \
@@ -113,25 +114,21 @@ cat chrx.sam \
    | cut -f1 \
    | sort -n \
    | uniq -c \
-   | head
+   | awk 'OFS="\t" {print $2, $1}' > chrx.tsv
 ```
 
-Reads repeating up to $n$ times are also mapped as expected!
+Plot mapping profile.
 
-```{bash engine.opts='-l'}
-cat chrx.sam \
-   | grep -v "^@" \
-   | cut -f1 \
-   | sort -n \
-   | uniq -c \
-   | sort -k2rn \
-   | head
+```{r exp_vs_obs}
+my_table <- read.delim('chrx.tsv', header = FALSE)
+plot(my_table, xlab = "Expected", ylab = "Observed", main = "Mapping repetitive reads with HISAT2 ", pch = 16)
+abline(0, 1, lty = 2, col = 2)
 ```
 
 Clean up.
 
 ```{bash engine.opts='-l'}
-rm *.fa *.ht2 *.sam
+rm *.fa *.ht2 *.sam *.tsv
 ```
 
 HISAT2 version used for this README.

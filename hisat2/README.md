@@ -250,7 +250,7 @@ same.
        hisat2 -a -f -x l${l}_r${r}_ref l${l}_r${r}_reads.fa 2> /dev/null
     done | grep $'^100\t0' | sort | uniq -c
 
-    ##     100 100  0   ref 1507401 1   100M    *   0   0   CTAGCGACAATTGTGGGATGGCCCCTGGGGATCACTGGAGACGAAAAGATGCTATGATGCACCAGTGCGTGCTTGACACTAGTGTATATAAAACTGTACA    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII    AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:100    YT:Z:UU NH:i:100
+    ##     100 100  0   ref 1505001 1   100M    *   0   0   AATCGCAAGTTTTGACTGTTGTGGCGTGCGTGTGGCAATGACACAGACTCTCTCTAACATTATTCACCGCTAAAAAACCTTCGACCCGTGATGCAAAGAT    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII    AS:i:0  ZS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:100    YT:Z:UU NH:i:100
 
 HISAT2 can map up to 3,500 loci (and more!).
 
@@ -283,50 +283,26 @@ Mapping repetitive reads to chromosome X.
     gunzip -c ../data/chrx_kmer.fa.gz > chrx_kmer.fa
     hisat2 -f -a -x chrx chrx_kmer.fa 2> /dev/null > chrx.sam
 
-Reads repeating up to 10 times are mapped as expected.
+Save map tally.
 
     cat chrx.sam \
        | grep -v "^@" \
        | cut -f1 \
        | sort -n \
        | uniq -c \
-       | head
+       | awk 'OFS="\t" {print $2, $1}' > chrx.tsv
 
-    ##       1 1
-    ##       2 2
-    ##       3 3
-    ##       4 4
-    ##       5 5
-    ##       6 6
-    ##       7 7
-    ##       8 8
-    ##       9 9
-    ##      10 10
+Plot mapping profile.
 
-Reads repeating up to *n* times are also mapped as expected!
+    my_table <- read.delim('chrx.tsv', header = FALSE)
+    plot(my_table, xlab = "Expected", ylab = "Observed", main = "Mapping repetitive reads with HISAT2 ", pch = 16)
+    abline(0, 1, lty = 2, col = 2)
 
-    cat chrx.sam \
-       | grep -v "^@" \
-       | cut -f1 \
-       | sort -n \
-       | uniq -c \
-       | sort -k2rn \
-       | head
-
-    ##    1470 1470
-    ##    1469 1469
-    ##    1468 1468
-    ##    1467 1467
-    ##    1465 1465
-    ##    1463 1463
-    ##    1452 1452
-    ##    1449 1449
-    ##    1448 1448
-    ##    1447 1447
+![](img/exp_vs_obs-1.png)
 
 Clean up.
 
-    rm *.fa *.ht2 *.sam
+    rm *.fa *.ht2 *.sam *.tsv
 
 HISAT2 version used for this README.
 
